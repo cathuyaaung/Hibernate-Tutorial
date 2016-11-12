@@ -1,15 +1,19 @@
 package org.thomas.java.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity (name="USER_DETAILS")
 public class UserDetails {
 	@Id
+	@Column (name="USER_ID")
 	private int userId;	
+	@Column (name="USER_NAME")
 	private String userName;
 	private String userAdd1;
 	private String userAdd2;
+	private String userCountry;
 	
 	public int getUserId() {
 		return userId;
@@ -35,4 +39,10 @@ public class UserDetails {
 	public void setUserAdd2(String userAdd2) {
 		this.userAdd2 = userAdd2;
 	}
+	public String getUserCountry() {
+		return userCountry;
+	}
+	public void setUserCountry(String userCountry) {
+		this.userCountry = userCountry;
+	}	
 }

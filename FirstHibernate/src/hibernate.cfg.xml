@@ -31,8 +31,15 @@
 	the default is to make no database changes. Instead, we manually create an SQL DDL update 
 	script that applies changes from one version to the next.
 	-->
+	<!-- 
+	validate | update | create | create-drop
+	validate- existing schema
+	update- only update your schema once created
+	create- create schema every time
+	 -->
+
 	<property name="hbm2ddl.auto">create</property>
-	
+	 
 	<!-- List of Model classes to map -->
 	<mapping class="org.thomas.java.dto.UserDetails"/>
 	
