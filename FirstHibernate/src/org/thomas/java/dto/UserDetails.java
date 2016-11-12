@@ -1,19 +1,30 @@
 package org.thomas.java.dto;
 
+
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-@Entity (name="USER_DETAILS")
+@Entity
+@Table (name="USER_DETAILS")
 public class UserDetails {
 	@Id
-	@Column (name="USER_ID")
 	private int userId;	
-	@Column (name="USER_NAME")
 	private String userName;
 	private String userAdd1;
 	private String userAdd2;
 	private String userCountry;
+	@Temporal (TemporalType.DATE)
+	private Date userDOB;
+	@Lob 
+	private String userDesc;
 	
 	public int getUserId() {
 		return userId;
@@ -44,5 +55,17 @@ public class UserDetails {
 	}
 	public void setUserCountry(String userCountry) {
 		this.userCountry = userCountry;
+	}
+	public Date getUserDOB() {
+		return userDOB;
+	}
+	public void setUserDOB(Date userDOB) {
+		this.userDOB = userDOB;
+	}
+	public String getUserDesc() {
+		return userDesc;
+	}
+	public void setUserDesc(String userDesc) {
+		this.userDesc = userDesc;
 	}	
 }
