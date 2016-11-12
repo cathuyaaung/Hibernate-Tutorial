@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+	<property name="hibernate.connection.username">thuya</property>
+	<property name="hibernate.connection.password">password</property>
+	
+	<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>	
+	<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>	
+	<property name="hibernate.connection.pool_size">5</property>   
+	<property name="show_sql">true</property>
+	  
+	<property name="show_sql">true</property>  
+	
+	<!-- Drop and re-create the database schema on startup 
+	http://stackoverflow.com/questions/438146/hibernate-hbm2ddl-auto-possible-values-and-what-they-do
+	
+	In our development environment we set hibernate.hbm2ddl.auto=create-drop to drop 
+	and create a clean database each time we deploy, so that our database is in a known state.
+
+	In theory, you can set hibernate.hbm2ddl.auto=update to update your database 
+	with changes to your model, but I would not trust that on a production database. 
+	An earlier version of the documentation said that this was experimental, at least; 
+	I do not know the current status.
+
+	Therefore, for our production database, do not set hibernate.hbm2ddl.auto - 
+	the default is to make no database changes. Instead, we manually create an SQL DDL update 
+	script that applies changes from one version to the next.
+	-->
+	<property name="hbm2ddl.auto">create</property>
+	
+	<!-- List of Model classes to map -->
+	<mapping class="org.thomas.java.dto.UserDetails"/>
+	
+</session-factory>
+</hibernate-configuration>
