@@ -59,7 +59,7 @@ public class HibernateTest {
 		user = null;
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		user = session.get(UserDetails.class, 1);
+//		user = session.get(UserDetails.class, 1);
 		
 	}
 
