@@ -3,11 +3,9 @@ package org.thomas.java.dto;
 
 import java.util.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -27,6 +25,10 @@ public class UserDetails {
 	private Date userDOB;
 	@Lob 
 	private String userDesc;
+	@Embedded
+	private Address address;
+	
+	
 	
 	public int getUserId() {
 		return userId;
@@ -69,5 +71,11 @@ public class UserDetails {
 	}
 	public void setUserDesc(String userDesc) {
 		this.userDesc = userDesc;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}	
 }
