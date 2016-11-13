@@ -16,27 +16,33 @@ public class HibernateTest {
 		session.beginTransaction();
 		
 		UserDetails user = new UserDetails();
-		user.setUserId(1);
+//		user.setUserId(1);
 		user.setUserName("alexandra");
 		user.setUserAdd1("Rome");
 		user.setUserAdd2("Roman Empire");
 		session.save(user);
 		
 		user = new UserDetails();
-		user.setUserId(2);
+//		user.setUserId(2);
 		user.setUserName("franz");
 		user.setUserAdd1("Austria");
 		user.setUserAdd2("Austra-Hungry Empire");
 		session.save(user);
 		
 		user = new UserDetails();
-		user.setUserId(3);
+//		user.setUserId(3);
 		user.setUserName("winston");
 		user.setUserAdd1("London");
 		user.setUserAdd2("England, United Kingdom");		
 		user.setUserDOB(new Date());
 		session.save(user);
 
+//		user = new UserDetails();
+//		user.setUserName("xxx");
+//		user.setUserAdd1("Triple X");
+//		user.setUserAdd2("Hollywood");
+//		session.save(user);		
+		
 		session.getTransaction().commit();
 		session.close();
 		
