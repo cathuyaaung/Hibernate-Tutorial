@@ -1,15 +1,18 @@
 package org.thomas.java.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="colored", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue("CAR")
 public class Vehicle {
 	@Id @GeneratedValue
 	private int vehicleId;

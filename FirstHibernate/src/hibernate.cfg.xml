@@ -43,6 +43,8 @@
 	<!-- List of Model classes to map -->
 	<mapping class="org.thomas.java.dto.UserDetails"/>
 	<mapping class="org.thomas.java.dto.Vehicle"/>
+	<mapping class="org.thomas.java.dto.TwoWheeler"/>
+	<mapping class="org.thomas.java.dto.FourWheeler"/>
 	
 </session-factory>
 </hibernate-configuration>
