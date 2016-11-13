@@ -1,31 +1,22 @@
 package org.thomas.java.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table (name="USER_DETAILS")
 public class UserDetails {
 	
-	@Id 
-	@GenericGenerator(name = "increment-gen", strategy = "increment")
-	@GeneratedValue(generator="increment-gen")
+	@Id @GeneratedValue
 	private int userId;	
 	
 	private String userName;
@@ -36,10 +27,9 @@ public class UserDetails {
 	@Lob 
 	private String userDesc;
 	
-	@ElementCollection (fetch=FetchType.EAGER)
-	@JoinTable (name="USER_ADDRESSES",
-			joinColumns=@JoinColumn(name="USER_ID"))
-	private Collection<Address> listOfAddresses = new ArrayList<Address>();
+	@OneToOne
+	@JoinColumn(name="VEHICLE_ID")
+	private Vehicle vehicle;
 	
 	
 	public int getUserId() {
@@ -66,11 +56,10 @@ public class UserDetails {
 	public void setUserDesc(String userDesc) {
 		this.userDesc = userDesc;
 	}
-	public Collection<Address> getListOfAddresses() {
-		return listOfAddresses;
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
-	public void setListOfAddresses(Collection<Address> listOfAddresses) {
-		this.listOfAddresses = listOfAddresses;
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
-
 }
