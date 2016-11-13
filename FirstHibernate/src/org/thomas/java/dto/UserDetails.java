@@ -1,8 +1,10 @@
 package org.thomas.java.dto;
 
-
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,17 @@ public class UserDetails {
 	@Lob 
 	private String userDesc;
 	@Embedded
-	private Address address;
+	@AttributeOverrides ({
+		@AttributeOverride (name="street", column=@Column(name="HOME_STREET")),
+		@AttributeOverride (name="block", column=@Column(name="HOME_BLOCK")),
+		@AttributeOverride (name="city", column=@Column(name="HOME_CITY")),
+		@AttributeOverride (name="state", column=@Column(name="HOME_STATE")),
+		@AttributeOverride (name="country", column=@Column(name="HOME_COUNTRY")),
+		@AttributeOverride (name="postalcode", column=@Column(name="HOME_POSTALCODE"))			
+	})	
+	private Address officeAddress;
+	@Embedded
+	private Address homeAddress;
 	
 	
 	
@@ -72,10 +84,18 @@ public class UserDetails {
 	public void setUserDesc(String userDesc) {
 		this.userDesc = userDesc;
 	}
-	public Address getAddress() {
-		return address;
+	public Address getOfficeAddress() {
+		return officeAddress;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}	
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
+	}
+	public Address getHomeAddress() {
+		return homeAddress;
+	}
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+	
+
 }

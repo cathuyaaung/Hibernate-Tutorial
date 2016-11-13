@@ -27,7 +27,7 @@ public class HibernateTest {
 		address.setPostalcode("600600");
 		address.setState("Singapore State");
 		address.setStreet("Downing Street");
-		user.setAddress(address);
+		user.setHomeAddress(address);
 		session.save(user);
 		
 		user = new UserDetails();
@@ -42,7 +42,7 @@ public class HibernateTest {
 		address.setPostalcode("B48787");
 		address.setState("SHukhinthar State");
 		address.setStreet("Mandalar Street");
-		user.setAddress(address);		
+		user.setOfficeAddress(address);		
 		session.save(user);
 		
 		user = new UserDetails();
