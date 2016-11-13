@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,35 +17,35 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table (name="USER_DETAILS")
 public class UserDetails {
 	
 	@Id 
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid")
-	@GeneratedValue(generator="uuid-gen")
-	private String userId;	
+	@GenericGenerator(name = "increment-gen", strategy = "increment")
+	@GeneratedValue(generator="increment-gen")
+	private int userId;	
+	
 	private String userName;
+	
 	@Temporal (TemporalType.DATE)
 	private Date userDOB;
+	
 	@Lob 
 	private String userDesc;
-	@ElementCollection
+	
+	@ElementCollection (fetch=FetchType.EAGER)
 	@JoinTable (name="USER_ADDRESSES",
 			joinColumns=@JoinColumn(name="USER_ID"))
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid")
-	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "uuid-gen", type = @Type(type="string"))
 	private Collection<Address> listOfAddresses = new ArrayList<Address>();
 	
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

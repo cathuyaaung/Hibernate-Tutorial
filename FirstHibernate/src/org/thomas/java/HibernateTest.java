@@ -1,5 +1,7 @@
 package org.thomas.java;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -59,7 +61,13 @@ public class HibernateTest {
 		user = null;
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-//		user = session.get(UserDetails.class, 1);
+		user = session.get(UserDetails.class, 1);
+		session.close();
+		Collection<Address> userAddresses = user.getListOfAddresses();
+//		for (Address address2 : userAddresses) {
+//			System.out.println(address2.getBlock());
+//		}
+		
 		
 	}
 
