@@ -15,10 +15,6 @@ public class Vehicle {
 	private int vehicleId;
 	private String vehiclename;
 	
-	@ManyToMany(mappedBy="vehicle")
-	private Collection<UserDetails> userList = new ArrayList<UserDetails>();
-	
-	
 	public int getVehicleId() {
 		return vehicleId;
 	}
@@ -30,12 +26,6 @@ public class Vehicle {
 	}
 	public void setVehiclename(String vehiclename) {
 		this.vehiclename = vehiclename;
-	}
-	public Collection<UserDetails> getUserList() {
-		return userList;
-	}
-	public void setUserList(Collection<UserDetails> userList) {
-		this.userList = userList;
 	}
 	
 }

@@ -15,34 +15,27 @@ public class HibernateTest {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
+		
 		UserDetails user = new UserDetails();
 		user.setUserName("alexandra");
 
-		Vehicle vehicle = new Vehicle();
-		vehicle.setVehiclename("car1");
-		vehicle.getUserList().add(user);
-		session.save(vehicle);
-		user.getVehicle().add(vehicle);
+		Vehicle vehicle1 = new Vehicle();
+		vehicle1.setVehiclename("car1");			
+		user.getVehicle().add(vehicle1);
 		
-		vehicle = new Vehicle();
-		vehicle.setVehiclename("car2");
-		vehicle.getUserList().add(user);
-		session.save(vehicle);
-		user.getVehicle().add(vehicle);
+		Vehicle vehicle2 = new Vehicle();
+		vehicle2.setVehiclename("car2");				
+		user.getVehicle().add(vehicle2);
 
-		vehicle = new Vehicle();
-		vehicle.setVehiclename("car3");
-		vehicle.getUserList().add(user);
-		session.save(vehicle);
-		user.getVehicle().add(vehicle);
+		Vehicle vehicle3 = new Vehicle();
+		vehicle3.setVehiclename("car3");				
+		user.getVehicle().add(vehicle3);
 		
-		session.save(user);
-		
-		user = new UserDetails();
-		user.setUserName("cleopactra");
-		vehicle.getUserList().add(user);
-		user.getVehicle().add(vehicle);
-		session.save(user);
+//		session.save(user);
+		session.persist(user);
+//		session.save(vehicle1);
+//		session.save(vehicle2);
+//		session.save(vehicle3);
 		
 		session.getTransaction().commit();
 		session.close();
