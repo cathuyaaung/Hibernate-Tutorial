@@ -1,12 +1,17 @@
 package org.thomas.java.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,9 +32,11 @@ public class UserDetails {
 	@Lob 
 	private String userDesc;
 	
-	@OneToOne
-	@JoinColumn(name="VEHICLE_ID")
-	private Vehicle vehicle;
+	@OneToMany
+	@JoinTable(name="USER_VEHICLE", 
+		joinColumns=@JoinColumn(name="USER_ID"),
+		inverseJoinColumns=@JoinColumn(name="VEHICLE_ID"))	
+	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
 	
 	public int getUserId() {
@@ -56,10 +63,10 @@ public class UserDetails {
 	public void setUserDesc(String userDesc) {
 		this.userDesc = userDesc;
 	}
-	public Vehicle getVehicle() {
+	public Collection<Vehicle> getVehicle() {
 		return vehicle;
 	}
-	public void setVehicle(Vehicle vehicle) {
+	public void setVehicle(Collection<Vehicle> vehicle) {
 		this.vehicle = vehicle;
 	}
 }
