@@ -20,25 +20,29 @@ public class HibernateTest {
 
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehiclename("car1");
-		vehicle.setUser(user);
+		vehicle.getUserList().add(user);
 		session.save(vehicle);
 		user.getVehicle().add(vehicle);
 		
 		vehicle = new Vehicle();
 		vehicle.setVehiclename("car2");
-		vehicle.setUser(user);
+		vehicle.getUserList().add(user);
 		session.save(vehicle);
 		user.getVehicle().add(vehicle);
 
 		vehicle = new Vehicle();
 		vehicle.setVehiclename("car3");
-		vehicle.setUser(user);
+		vehicle.getUserList().add(user);
 		session.save(vehicle);
 		user.getVehicle().add(vehicle);
 		
 		session.save(user);
 		
-		
+		user = new UserDetails();
+		user.setUserName("cleopactra");
+		vehicle.getUserList().add(user);
+		user.getVehicle().add(vehicle);
+		session.save(user);
 		
 		session.getTransaction().commit();
 		session.close();
